@@ -8,7 +8,21 @@ const syntax_colors = {
 };
 
 const is_token = (str) => {
-  return str === "if" ? true : false;
+  return str === "if" ||
+    str === "for" ||
+    str === "I0" ||
+    str === "U0" ||
+    str === "I8" ||
+    str === "U8" ||
+    str === "I16" ||
+    str === "U16" ||
+    str === "I32" ||
+    str === "U32" ||
+    str === "I64" ||
+    str === "U64" ||
+    str === "F64"
+    ? true
+    : false;
 };
 
 const element = (str, color) => {
