@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+}
+
+span {
+  white-space: pre;
+}
+
+textarea {
+  height: 200px;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  color: transparent;
+  caret-color: black;
+  font-size: large;
+  white-space: break-spaces;
+}
+
+.highlight {
+  z-index: -1;
+  font-size: large;
+  position: absolute;
+  top: 0;
+  overflow-y: auto;
+  height: 200px;
+  width: 300px;
+  -webkit-overflow-scrolling: touch;
+}
+
+span {
+  word-break: break-word;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
