@@ -18,12 +18,12 @@ const element = (str, color) => {
   return el;
 };
 
-const is_digit = (val) => {
+const lex_is_digit = (val) => {
   return !isNaN(val);
 };
 
-const is_alpha = (val) => {
-  if (is_digit(val)) return;
+const lex_is_alpha = (val) => {
+  if (lex_is_digit(val)) return;
   return /^[A-Z0-9]$/i.test(val);
 };
 
@@ -63,19 +63,19 @@ const lex = (str) => {
       elements.push(element(space, ""));
     }
 
-    if (is_digit(str[i])) {
+    if (lex_is_digit(str[i])) {
       let number = "";
-      while (is_digit(str[i])) {
+      while (lex_is_digit(str[i])) {
         number += str[i++];
       }
       i--;
       elements.push(element(number, syntax_colors.blue));
     }
 
-    if (is_alpha(str[i])) {
+    if (lex_is_alpha(str[i])) {
       console.log("aqui");
       let text = "";
-      while (is_alpha(str[i])) {
+      while (lex_is_alpha(str[i])) {
         text += str[i++];
       }
 
@@ -105,8 +105,8 @@ const lex = (str) => {
       str[i] !== "\n" &&
       str[i] !== " " &&
       str[i] !== '"' &&
-      !is_alpha(str[i]) &&
-      !is_digit(str[i]) &&
+      !lex_is_alpha(str[i]) &&
+      !lex_is_digit(str[i]) &&
       str[i]
     ) {
       elements.push(element(str[i], "black"));
