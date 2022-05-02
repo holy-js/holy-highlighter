@@ -73,7 +73,6 @@ const lex = (str) => {
     }
 
     if (lex_is_alpha(str[i])) {
-      console.log("aqui");
       let text = "";
       while (lex_is_alpha(str[i])) {
         text += str[i++];
@@ -115,6 +114,15 @@ const lex = (str) => {
   return elements;
 };
 
+const set_scroll = () => {
+  const code = document.getElementById("code");
+  const hl = document.getElementById("hl");
+  const codeLeft = code.scrollLeft;
+  const codeTop = code.scrollTop;
+  hl.scrollLeft = codeLeft;
+  hl.scrollTop = codeTop;
+};
+
 const highlight = (e) => {
   const hl = document.getElementById("hl");
   hl.innerHTML = "";
@@ -125,5 +133,5 @@ const highlight = (e) => {
     hl.appendChild(elements[i]);
   }
 
-  hl.scrollTop = hl.scrollHeight;
+  set_scroll();
 };

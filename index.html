@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <textarea oninput="highlight(this.value)"></textarea>
+    <textarea id="code" onscroll="set_scroll()" oninput="highlight(this.value)"></textarea>
     <div id="hl" class="highlight"></div>
     <script src="holyc-highlighter.js"></script>
 </body>
