@@ -16,18 +16,18 @@ textarea {
 }
 
 .highlight {
-  z-index: -1;
+  pointer-events: none;
   font-size: large;
   position: absolute;
   top: 0;
-  overflow-y: auto;
+  overflow-x: auto;
   height: 200px;
   width: 300px;
   -webkit-overflow-scrolling: touch;
 }
 
 span {
-  white-space: pre;
+  white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
   -ms-word-break: break-word;
@@ -37,4 +37,15 @@ span {
   -webkit-hyphens: auto;
   hyphens: auto;
   overflow-wrap: break-word;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: rgb(43, 43, 43);
+  background: rgb(47, 114, 202);
+}
+
+::selection {
+  color: rgb(43, 43, 43);
+  background: rgb(107, 162, 235);
 }

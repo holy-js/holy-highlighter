@@ -37,7 +37,6 @@ const lex_is_digit = (val) => {
 };
 
 const lex_is_alpha = (val) => {
-  if (lex_is_digit(val)) return;
   return /^[A-Z0-9]$/i.test(val);
 };
 
@@ -86,7 +85,7 @@ const lex = (str) => {
       elements.push(element(number, syntax_colors.blue));
     }
 
-    if (lex_is_alpha(str[i])) {
+    if (lex_is_alpha(str[i]) && !lex_is_digit(str[i])) {
       let text = "";
       while (lex_is_alpha(str[i])) {
         text += str[i++];
@@ -104,13 +103,14 @@ const lex = (str) => {
       elements.push(element(text, color));
     }
 
-    if (str[i] === '"') {
+    if (str[i] === '"' || str[i] === "'") {
       let string = "";
       while (1) {
         string += str[i++];
-        if (str[i] === '"' || i === str.length) break;
+        if (str[i] === '"' || str[i] === "'" || i === str.length) break;
       }
       if (str[i] === '"') string += '"';
+      else if (str[i] === '\'') string += '\'';
       elements.push(element(string, syntax_colors.orange));
     }
 
@@ -118,6 +118,7 @@ const lex = (str) => {
       str[i] !== "\n" &&
       str[i] !== " " &&
       str[i] !== '"' &&
+      str[i] !== '\'' &&
       !lex_is_alpha(str[i]) &&
       !lex_is_digit(str[i]) &&
       str[i]
