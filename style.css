@@ -5,6 +5,7 @@
 }
 
 textarea {
+  resize: none;
   height: 200px;
   width: 300px;
   background-color: rgba(0, 0, 0, 0);
@@ -16,6 +17,7 @@ textarea {
 }
 
 .highlight {
+  overflow: hidden;
   pointer-events: none;
   font-size: large;
   position: absolute;

@@ -4,7 +4,7 @@ const syntax_colors = {
   blue: "#3a75b0",
   purple: "#5c3a9c",
   orange: "#9c5717",
-  green: "green",
+  green: "#3d7339",
 };
 
 const is_token = (str) => {
@@ -105,12 +105,13 @@ const lex = (str) => {
 
     if (str[i] === '"' || str[i] === "'") {
       let string = "";
+      let strsymbol = str[i]
       while (1) {
         string += str[i++];
-        if (str[i] === '"' || str[i] === "'" || i === str.length) break;
+        if (str[i] === strsymbol || i === str.length) break;
       }
       if (str[i] === '"') string += '"';
-      else if (str[i] === '\'') string += '\'';
+      else if (str[i] === "'") string += "'";
       elements.push(element(string, syntax_colors.orange));
     }
 
@@ -118,7 +119,7 @@ const lex = (str) => {
       str[i] !== "\n" &&
       str[i] !== " " &&
       str[i] !== '"' &&
-      str[i] !== '\'' &&
+      str[i] !== "'" &&
       !lex_is_alpha(str[i]) &&
       !lex_is_digit(str[i]) &&
       str[i]
@@ -132,10 +133,8 @@ const lex = (str) => {
 const set_scroll = () => {
   const code = document.getElementById("code");
   const hl = document.getElementById("hl");
-  const codeLeft = code.scrollLeft;
-  const codeTop = code.scrollTop;
-  hl.scrollLeft = codeLeft;
-  hl.scrollTop = codeTop;
+  hl.scrollLeft = code.scrollLeft;
+  hl.scrollTop = code.scrollTop;
 };
 
 const highlight = (e) => {
@@ -146,6 +145,11 @@ const highlight = (e) => {
 
   for (let i = 0; i < elements.length; ++i) {
     hl.appendChild(elements[i]);
+  }
+
+  // fix break line if it is in last element 
+  if (elements[elements.length - 1].isEqualNode(document.createElement("br"))) {
+    hl.appendChild(document.createElement("br"));
   }
 
   set_scroll();
