@@ -105,7 +105,7 @@ const lex = (str) => {
 
     if (str[i] === '"' || str[i] === "'") {
       let string = "";
-      let strsymbol = str[i]
+      let strsymbol = str[i];
       while (1) {
         string += str[i++];
         if (str[i] === strsymbol || i === str.length) break;
@@ -124,6 +124,10 @@ const lex = (str) => {
       !lex_is_digit(str[i]) &&
       str[i]
     ) {
+      if (str[i] === "/" && str[i + 1] === "/") {
+        i--;
+        continue;
+      }
       elements.push(element(str[i], "black"));
     }
   }
@@ -147,7 +151,7 @@ const highlight = (e) => {
     hl.appendChild(elements[i]);
   }
 
-  // fix break line if it is in last element 
+  // fix break line if it is in last element
   if (elements[elements.length - 1].isEqualNode(document.createElement("br"))) {
     hl.appendChild(document.createElement("br"));
   }
