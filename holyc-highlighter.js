@@ -48,7 +48,7 @@ const is_next = (str, i, expected) => {
   return false;
 };
 
-const lex = (str) => {
+const jshlchl_lex = (str) => {
   let elements = [];
   for (let i = 0; i < str.length; ++i) {
     if (str[i] === "/" && str[i + 1] === "/") {
@@ -135,17 +135,17 @@ const lex = (str) => {
 };
 
 const set_scroll = () => {
-  const code = document.getElementById("code");
+  const stdin = document.getElementById("stdin");
   const hl = document.getElementById("hl");
-  hl.scrollLeft = code.scrollLeft;
-  hl.scrollTop = code.scrollTop;
+  hl.scrollLeft = stdin.scrollLeft;
+  hl.scrollTop = stdin.scrollTop;
 };
 
 const highlight = (e) => {
   const hl = document.getElementById("hl");
   hl.innerHTML = "";
 
-  const elements = lex(e);
+  const elements = jshlchl_lex(e);
 
   for (let i = 0; i < elements.length; ++i) {
     hl.appendChild(elements[i]);
