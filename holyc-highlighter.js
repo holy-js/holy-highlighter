@@ -11,6 +11,9 @@ const syntax_colors = {
 const is_token = (str) => {
   return str === "if" ||
     str === "for" ||
+    str === "else" ||
+    str === "TRUE" ||
+    str === "FALSE" ||
     str === "I0" ||
     str === "U0" ||
     str === "I8" ||
