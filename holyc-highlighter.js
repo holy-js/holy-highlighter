@@ -1,11 +1,11 @@
 const syntax_colors = {
   black: "black",
   red: "red",
-  blue: "blue",
+  blue: "#0000aa",
   purple: "purple",
-  orange: "orange",
-  lightorange: "DarkGoldenRod",
-  green: "green",
+  orange: "#aa5500",
+  lightorange: "#aa5500",
+  green: "#00aa00",
 };
 
 const is_token = (str) => {
@@ -94,9 +94,9 @@ const jshlchl_lex = (str) => {
 
       let color;
       if (is_token(text)) {
-        color = syntax_colors.red;
+        color = syntax_colors.blue;
       } else if (is_next(str, i, "(")) {
-        color = syntax_colors.purple;
+        color = syntax_colors.black;
       } else {
         color = syntax_colors.black;
       }
