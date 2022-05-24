@@ -1,10 +1,11 @@
 const syntax_colors = {
-  black: "#141414",
-  red: "#ad4747",
-  blue: "#3a75b0",
-  purple: "#5c3a9c",
-  orange: "#9c5717",
-  green: "#3d7339",
+  black: "black",
+  red: "red",
+  blue: "blue",
+  purple: "purple",
+  orange: "orange",
+  lightorange: "DarkGoldenRod",
+  green: "green",
 };
 
 const is_token = (str) => {
@@ -107,6 +108,13 @@ const jshlchl_lex = (str) => {
       let string = "";
       let strsymbol = str[i];
       while (1) {
+        if (str[i] === "\\") {
+          elements.push(element(string, syntax_colors.orange));
+          elements.push(element(str[i] + str[++i], syntax_colors.lightorange));
+          string = "";
+          i++;
+          if (str[i] === strsymbol || i === str.length) break;
+        }
         string += str[i++];
         if (str[i] === strsymbol || i === str.length) break;
       }
