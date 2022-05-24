@@ -2,29 +2,34 @@ const syntax_colors = {
   black: "black",
   red: "red",
   blue: "#0000aa",
-  purple: "purple",
+  lightblue: "#00aaaa",
+  purple: "#5555ff",
   orange: "#aa5500",
   lightorange: "#aa5500",
   green: "#00aa00",
 };
 
-const is_token = (str) => {
+const is_blue_keyword = (str) => {
   return str === "if" ||
     str === "for" ||
     str === "else" ||
-    str === "TRUE" ||
-    str === "FALSE" ||
     str === "I0" ||
     str === "U0" ||
     str === "I8" ||
     str === "U8" ||
     str === "I16" ||
-    str === "U16" ||
     str === "I32" ||
-    str === "U32" ||
-    str === "I64" ||
-    str === "U64" ||
     str === "F64"
+    ? true
+    : false;
+};
+
+const is_lightblue_keyword = (str) => {
+  return str === "TRUE" || str === "FALSE" ? true : false;
+};
+
+const is_purple_keyword = (str) => {
+  return str === "I64" || str === "U64" || str === "U32" || str === "U16"
     ? true
     : false;
 };
@@ -96,8 +101,12 @@ const jshlchl_lex = (str) => {
       }
 
       let color;
-      if (is_token(text)) {
+      if (is_blue_keyword(text)) {
         color = syntax_colors.blue;
+      } else if (is_lightblue_keyword(text)) {
+        color = syntax_colors.lightblue;
+      } else if (is_purple_keyword(text)) {
+        color = syntax_colors.purple;
       } else if (is_next(str, i, "(")) {
         color = syntax_colors.black;
       } else {
