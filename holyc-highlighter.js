@@ -13,6 +13,7 @@ const is_blue_keyword = (str) => {
   return str === "if" ||
     str === "for" ||
     str === "else" ||
+    str === "return" ||
     str === "I0" ||
     str === "U0" ||
     str === "I8" ||
@@ -46,7 +47,7 @@ const lex_is_digit = (val) => {
 };
 
 const lex_is_alpha = (val) => {
-  return /^[A-Z0-9]$/i.test(val);
+  return /^[A-Z0-9_]$/i.test(val);
 };
 
 const is_next = (str, i, expected) => {
