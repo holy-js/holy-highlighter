@@ -59,6 +59,7 @@ const is_next = (str, i, expected) => {
 };
 
 const jshlchl_lex = (str) => {
+  if (!str) return;
   let elements = [];
   for (let i = 0; i < str.length; ++i) {
     if (str[i] === "/" && str[i + 1] === "/") {
@@ -120,7 +121,7 @@ const jshlchl_lex = (str) => {
     if (str[i] === '"' || str[i] === "'") {
       let string = "";
       let strsymbol = str[i];
-      while (1) {
+      while (str[i]) {
         if (str[i] === "\\") {
           elements.push(element(string, syntax_colors.orange));
           elements.push(element(str[i] + str[++i], syntax_colors.lightorange));
@@ -167,7 +168,8 @@ const highlight = (e) => {
   hl.innerHTML = "";
 
   const elements = jshlchl_lex(e);
-
+  if (!elements) return;
+  
   for (let i = 0; i < elements.length; ++i) {
     hl.appendChild(elements[i]);
   }
