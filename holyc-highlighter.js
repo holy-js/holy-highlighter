@@ -20,7 +20,8 @@ const is_blue_keyword = (str) => {
     str === "U8" ||
     str === "I16" ||
     str === "I32" ||
-    str === "F64"
+    str === "F64" ||
+    str === "class"
     ? true
     : false;
 };
