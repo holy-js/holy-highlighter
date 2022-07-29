@@ -1,6 +1,5 @@
 const syntax_colors = {
-  black: "black",
-  red: "red",
+  black: "#000000",
   blue: "#0000aa",
   lightblue: "#00aaaa",
   purple: "#5555ff",
@@ -164,7 +163,7 @@ const set_scroll = () => {
   hl.scrollTop = stdin.scrollTop;
 };
 
-const highlight = (e) => {
+export const highlight = (e) => {
   const hl = document.getElementById("hl");
   hl.innerHTML = "";
 
