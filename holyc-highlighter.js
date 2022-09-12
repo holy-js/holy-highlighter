@@ -20,7 +20,8 @@ const is_blue_keyword = (str) => {
     str === "I16" ||
     str === "I32" ||
     str === "F64" ||
-    str === "class"
+    str === "class" ||
+    str === "#define"
     ? true
     : false;
 };
@@ -47,7 +48,7 @@ const lex_is_digit = (val) => {
 };
 
 const lex_is_alpha = (val) => {
-  return /^[A-Z0-9_]$/i.test(val);
+  return /^[A-Z0-9_#]$/i.test(val);
 };
 
 const is_next = (str, i, expected) => {
