@@ -21,7 +21,8 @@ const is_blue_keyword = (str) => {
     str === "I32" ||
     str === "F64" ||
     str === "class" ||
-    str === "#define"
+    str === "#define" ||
+    str === "#include"
     ? true
     : false;
 };
