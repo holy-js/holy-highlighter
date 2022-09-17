@@ -22,7 +22,9 @@ const is_blue_keyword = (str) => {
     str === "F64" ||
     str === "class" ||
     str === "#define" ||
-    str === "#include"
+    str === "#include" ||
+    str === "js" ||
+    str === "endjs" 
     ? true
     : false;
 };
