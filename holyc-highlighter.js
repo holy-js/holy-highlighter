@@ -158,7 +158,7 @@ const jshlchl_lex = (str) => {
   return elements;
 };
 
-const set_scroll = () => {
+export const set_scroll = () => {
   const stdin = document.getElementById("stdin");
   const hl = document.getElementById("hl");
   hl.scrollLeft = stdin.scrollLeft;
