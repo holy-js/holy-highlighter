@@ -23,8 +23,7 @@ const is_blue_keyword = (str) => {
     str === "class" ||
     str === "#define" ||
     str === "#include" ||
-    str === "js" ||
-    str === "endjs" 
+    str === "js"
     ? true
     : false;
 };
